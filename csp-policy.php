@@ -26,7 +26,7 @@ add_action('admin_init', function () {
         'sanitize_callback' => function ($v) {
             return in_array($v, ['report', 'enforce'], true) ? $v : 'enforce';
         },
-        'default' => 'enforce',
+        'default' => 'report',
     ]);
 
     add_settings_section('csp_report_section', 'Report Mode', '__return_false', $page);
