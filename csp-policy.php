@@ -36,6 +36,7 @@ add_action('admin_init', function () {
         'Mode',
         function () {
             $mode = get_option('csp_report_mode', 'enforce'); ?>
+            <span>Select the enforcement mode. Keep in report while testing and adding violations to directives.</span><br>
             <label>
                 <input type="radio" name="csp_report_mode" value="enforce" <?php checked($mode, 'enforce'); ?>>
                 Enforce (<code>Content-Security-Policy</code>)
@@ -74,7 +75,7 @@ add_action('admin_init', function () {
             $dir,
             function () use ($option) {
                 $val = get_option($option, '');
-                echo '<textarea name="' . esc_attr($option) . '" rows="5" class="large-text code">' .
+                echo '<span>Separate URLs with a space.</span><br><textarea name="' . esc_attr($option) . '" rows="5" class="large-text code">' .
                      esc_textarea($val) . '</textarea>';
             },
             $page,
@@ -87,6 +88,7 @@ function csp_settings_page() {
     if (!current_user_can('manage_options')) return; ?>
     <div class="wrap">
         <h1>CSP Settings</h1>
+        <span>When adding URLs to the directives only use the base domain and not the full URL.</span>
         <form method="post" action="options.php">
             <?php
             settings_fields('csp_settings');
