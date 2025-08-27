@@ -35,7 +35,7 @@ add_action('admin_init', function () {
         'csp_report_mode',
         'Mode',
         function () {
-            $mode = get_option('csp_report_mode', 'enforce'); ?>
+            $mode = get_option('csp_report_mode', 'report'); ?>
             <span>Select the enforcement mode. Keep in report while testing and adding violations to directives.</span><br>
             <label>
                 <input type="radio" name="csp_report_mode" value="enforce" <?php checked($mode, 'enforce'); ?>>
